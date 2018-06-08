@@ -4,7 +4,7 @@ import sys
 Instructions:
  - Rk := Rk + 1
  - Rk := Rk - 1
- - if (Rk = 0) then goto q
+ - if Rk = 0 then goto q
  - stop: finished entering instructions
 """
 
@@ -48,7 +48,7 @@ def encode_instructions():
             instructions[input_num] = ["p", ins_to_process[0:ins_to_process.find(" ")]]
         elif "goto" in ins_to_process:  # Conditional goto
             instructions[input_num] = [
-                ins_to_process[ins_to_process.find("(")+1:ins_to_process.find(")")],
+                ins_to_process[ins_to_process.find("R")+1:ins_to_process.find(" =")],
                 ins_to_process[-ins_to_process[::-1].find(" "):]
             ]
         else:
