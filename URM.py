@@ -58,7 +58,28 @@ def encode_instructions():
 
 
 def register_to_index(register):
-    return register[-1:]
+    return int(register[-1:])
+
+
+def run_urm():
+    global instructions, registers, pc
+
+    while pc < len(instructions):
+        print(registers)
+        cur_instruction_list = instructions[pc]
+        cur_instruction = cur_instruction_list[0]
+        cur_register = cur_instruction_list[1]
+
+        if cur_instruction == "s":
+            registers[cur_register] = registers[cur_register] + 1
+        elif cur_instruction == "p":
+            registers[cur_register] = registers[cur_register] - 1
+        elif cur_instruction == "goto":
+            if registers[cur_register] == 0:
+                pc = cur_instruction_list[2]
+                pc -= 1
+
+        pc += 1
 
 
 if __name__ == '__main__':
@@ -80,3 +101,4 @@ if __name__ == '__main__':
 
     encode_instructions()
 
+    run_urm()
