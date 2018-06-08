@@ -39,6 +39,7 @@ Encodes instructions so they can be executed:
 """
 def encode_instructions():
     global instructions
+
     for input_num in range(len(instructions)):
         # Fetch the instruction to encode
         ins_to_process = instructions[input_num]
@@ -67,7 +68,8 @@ def run_urm():
     global instructions, registers, pc
 
     while pc < len(instructions):
-        print(registers)
+        pc_changed = False
+
         cur_instruction_list = instructions[pc]
         cur_instruction = cur_instruction_list[0]
         cur_register = cur_instruction_list[1]
@@ -78,10 +80,26 @@ def run_urm():
             registers[cur_register] = registers[cur_register] - 1
         elif cur_instruction == "goto":
             if registers[cur_register] == 0:
+                print_registers()
                 pc = cur_instruction_list[2]
-                pc -= 1
+                pc_changed = True
 
-        pc += 1
+        if not pc_changed:
+            print_registers()
+            pc += 1
+
+
+def print_registers():
+    if pc < len(org_instructions):
+        end_reg = len(registers)
+        for elem in reversed(registers):
+            if elem != 0:
+                break
+            end_reg -= 1
+        if end_reg == 0:
+            end_reg = 1
+
+        print("PC: {} Registers: {} Executed: '{}'".format(pc, registers[:end_reg], org_instructions[pc]))
 
 
 if __name__ == '__main__':
