@@ -33,7 +33,7 @@ def add_instruction(instruction):
 Encodes instructions so they can be executed:
  - Successor: [s, reg#]
  - Predecessor: [p, reg#]
- - Cond. goto: [reg#, ins#]
+ - Cond. goto: [ins#, reg#]
 """
 def encode_instructions():
     global instructions
@@ -48,8 +48,8 @@ def encode_instructions():
             instructions[input_num] = ["p", ins_to_process[0:ins_to_process.find(" ")]]
         elif "goto" in ins_to_process:  # Conditional goto
             instructions[input_num] = [
-                ins_to_process[ins_to_process.find("R")+1:ins_to_process.find(" =")],
-                ins_to_process[-ins_to_process[::-1].find(" "):]
+                ins_to_process[-ins_to_process[::-1].find(" "):],
+                ins_to_process[ins_to_process.find("R")+1:ins_to_process.find(" =")]
             ]
         else:
             print("Invalid instruction: " + ins_to_process)
