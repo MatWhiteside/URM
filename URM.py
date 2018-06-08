@@ -10,6 +10,7 @@ Instructions:
 
 
 registers = []
+org_instructions = []
 instructions = []
 pc = 0
 
@@ -25,8 +26,9 @@ def init_urm(num_registers, inputs):
 
 
 def add_instruction(instruction):
-    global instructions
+    global instructions, org_instructions
     instructions.append(instruction)
+    org_instructions.append(instruction)
 
 
 """
