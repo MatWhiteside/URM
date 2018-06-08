@@ -2,6 +2,7 @@ import sys
 
 """"
 Program to model a URM as given from "CS-275: Automata and Formal Language Theory" module @ Swansea University.
+Author: Matthew Whiteside
 
 Instructions:
  - Rk := Rk + 1
