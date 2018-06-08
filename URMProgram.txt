@@ -1,0 +1,10 @@
+if R0 = 0 then goto 5
+R0 := R0 - 1
+R1 := R1 + 1
+R1 := R1 + 1
+if R2 = 0 then goto 0
+if R1 = 0 then goto 10
+R1 := R1 - 1
+R0 := R0 + 1
+R0 := R0 + 1
+if R2 = 0 then goto 5
