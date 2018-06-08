@@ -21,7 +21,7 @@ def init_urm(num_registers, inputs):
 
     # Load the inputs into the registers
     for input_num in range(len(inputs)):
-        registers[input_num] = inputs[input_num]
+        registers[input_num] = int(inputs[input_num])
 
 
 def add_instruction(instruction):
