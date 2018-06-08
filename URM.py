@@ -31,6 +31,21 @@ def add_instruction(instruction):
     org_instructions.append(instruction)
 
 
+def file_in(file_path):
+    lines = [line.strip('\n') for line in open(file_path)]
+
+    for l in lines:
+        add_instruction(l)
+
+
+def console_in():
+    # Take the program as an input via the console
+    ins = input("Enter instruction: ")
+    while ins != "stop":
+        add_instruction(ins)
+        ins = input("Enter instruction: ")
+
+
 """
 Encodes instructions so they can be executed:
  - Successor: [s, reg#]
@@ -103,11 +118,7 @@ def print_registers():
 
 
 if __name__ == '__main__':
-    # Take the program as an input via the console
-    ins = input("Enter instruction: ")
-    while ins != "stop":
-        add_instruction(ins)
-        ins = input("Enter instruction: ")
+    file_in("URMProgram.txt")
 
     parameters = []
     # Take the inputs via the console
