@@ -33,7 +33,7 @@ def add_instruction(instruction):
 Encodes instructions so they can be executed:
  - Successor: [s, reg#]
  - Predecessor: [p, reg#]
- - Cond. goto: [cond, reg#]
+ - Cond. goto: [reg#, ins#]
 """
 def encode_instructions():
     global instructions
