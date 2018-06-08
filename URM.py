@@ -1,8 +1,10 @@
+import sys
+
 """"
 Instructions:
  - Rk := Rk + 1
  - Rk := Rk - 1
- - if (B) then goto q
+ - if (Rk = 0) then goto q
  - stop: finished entering instructions
 """
 
@@ -49,6 +51,9 @@ def encode_instructions():
                 ins_to_process[ins_to_process.find("(")+1:ins_to_process.find(")")],
                 ins_to_process[-ins_to_process[::-1].find(" "):]
             ]
+        else:
+            print("Invalid instruction: " + ins_to_process)
+            sys.exit(0)
 
 
 if __name__ == '__main__':
@@ -69,4 +74,4 @@ if __name__ == '__main__':
     init_urm(100, parameters)
 
     encode_instructions()
-    print(instructions)
+
