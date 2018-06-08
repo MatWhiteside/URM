@@ -42,9 +42,9 @@ def encode_instructions():
         ins_to_process = instructions[input_num]
 
         # Encode the instruction
-        if "+" in ins_to_process:   # Successor
+        if "+" in ins_to_process:       # Successor
             instructions[input_num] = ["s", ins_to_process[0:ins_to_process.find(" ")]]
-        elif "-" in ins_to_process: # Predecessor
+        elif "-" in ins_to_process:     # Predecessor
             instructions[input_num] = ["p", ins_to_process[0:ins_to_process.find(" ")]]
         elif "goto" in ins_to_process:  # Conditional goto
             instructions[input_num] = [
@@ -54,6 +54,10 @@ def encode_instructions():
         else:
             print("Invalid instruction: " + ins_to_process)
             sys.exit(0)
+
+
+def register_to_index(register):
+    return register[-1:]
 
 
 if __name__ == '__main__':
